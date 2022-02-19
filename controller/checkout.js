@@ -27,6 +27,9 @@ module.exports = {
           email: user.email,
           phone: user.phone,
         },
+        callback : {
+            finish : "https://google.com/"
+        }
       });
       return res.send(transaction.redirect_url);
     } catch (error) {
