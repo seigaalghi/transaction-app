@@ -18,7 +18,7 @@ const orderSchema = new Schema({
   },
   status :{
     type : String,
-    default : "PENDING"
+    default : "pending"
   },
   createdAt: {
     type: Date,

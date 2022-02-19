@@ -27,15 +27,26 @@ module.exports = {
           email: user.email,
           phone: user.phone,
         },
-        callback : {
-            finish : "https://google.com/"
-        }
+        callback: {
+          finish: "https://google.com/",
+        },
       });
       return res.send(transaction.redirect_url);
     } catch (error) {
       res.status(500).json({
         message: error.message,
       });
+    }
+  },
+  callback: async (req, res) => {
+      const body = req.body
+    try {
+      const order = await Order.findById(body.order_id)
+      order.status = body.transaction_status
+      await order.save()
+      res.sendStatus(200);
+    } catch (error) {
+      res.sendStatus(500);
     }
   },
 };
