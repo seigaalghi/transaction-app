@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 5000
+const port = process.env.PORT || 5000
 const mongodb = require('./config/mongodb')
 const {checkout} = require('./controller/checkout')
 const { createProduct } = require('./controller/product')
